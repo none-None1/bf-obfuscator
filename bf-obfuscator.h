@@ -7,6 +7,13 @@
 #ifdef _WIN32
 #define A __declspec(dllexport)
 #include <windows.h>
+extern "C"
+WINBASEAPI
+ULONGLONG
+WINAPI
+GetTickCount64(
+    VOID
+);
 #else
 #define A
 #endif

@@ -140,20 +140,22 @@ std::string A add_redundant_code(std::string in, int obfuscate_times, int obfusc
 	return in;
 }
 std::string A obfuscate(std::string in,int obfuscate_times,int obfuscate_level,int obfuscate_mode) {
-	if (obfuscate_mode & REDUNDANT_PLUS_MINUS) {
-		in=add_redundant_plus_minus(in, obfuscate_times, obfuscate_level, &obfuscate_times);
-	}
-	if (obfuscate_mode & REDUNDANT_LEFT_RIGHT) {
-		in = add_redundant_left_right(in, obfuscate_times, obfuscate_level, &obfuscate_times);
-	}
-	if (obfuscate_mode & REDUNDANT_LOOPS) {
-		in = add_redundant_pars(in, obfuscate_times, obfuscate_level, &obfuscate_times);
-	}
-	if (obfuscate_mode & REDUNDANT_CHARS) {
-		in = add_redundant_chars(in, obfuscate_times, obfuscate_level, &obfuscate_times);
-	}
-	if (obfuscate_mode & REDUNDANT_CODE) {
-		in = add_redundant_code(in, obfuscate_times, obfuscate_level, &obfuscate_times);
+	while (obfuscate_times) {
+		if (obfuscate_mode & REDUNDANT_PLUS_MINUS) {
+			in = add_redundant_plus_minus(in, obfuscate_times, obfuscate_level, &obfuscate_times);
+		}
+		if (obfuscate_mode & REDUNDANT_LEFT_RIGHT) {
+			in = add_redundant_left_right(in, obfuscate_times, obfuscate_level, &obfuscate_times);
+		}
+		if (obfuscate_mode & REDUNDANT_LOOPS) {
+			in = add_redundant_pars(in, obfuscate_times, obfuscate_level, &obfuscate_times);
+		}
+		if (obfuscate_mode & REDUNDANT_CHARS) {
+			in = add_redundant_chars(in, obfuscate_times, obfuscate_level, &obfuscate_times);
+		}
+		if (obfuscate_mode & REDUNDANT_CODE) {
+			in = add_redundant_code(in, obfuscate_times, obfuscate_level, &obfuscate_times);
+		}
 	}
 	return in;
 }
